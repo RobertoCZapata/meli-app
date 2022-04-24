@@ -1,10 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import searchIcon from "../assets/img/ic_Search.png";
-import logoMeli from "../assets/img/Logo_ML.png";
-import { Input, Button } from "reactstrap";
 import { useState } from "react";
+
+import { SearchBar } from "../src/components/SearchBar";
+import styles from "../styles/Home.module.scss";
+import { ListItem } from "../src/components/ListItem";
 
 export default function Home() {
   const [query, setQuery] = useState();
@@ -14,7 +13,11 @@ export default function Home() {
   const handleSearchClick = () => {
     fetch(`http://localhost:3000/api/items?q=${query}`)
       .then((response) => response.json())
-      .then(({ data }) => console.log(data.results));
+      .then(({ data }) => setItems(data.results));
+  };
+
+  const handleChange = (element) => {
+    setQuery(element.target.value);
   };
 
   return (
@@ -26,20 +29,21 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.nav__container}>
-          <div className={styles.nav__logo}>
-            <Image src={logoMeli} alt="LOGO" />
-          </div>
-
-          <Input
-            className={styles.search}
-            name="search"
-            placeholder="Nunca dejes de buscar"
-            onChange={(element) => setQuery(element.target.value)}
-          />
-          <Button onClick={handleSearchClick} className={styles.btn__search}>
-            <Image src={searchIcon} alt="SEARCH_ICON" />
-          </Button>
+        <SearchBar
+          handleSearchClick={handleSearchClick}
+          handleChange={handleChange}
+        />
+        <div className={styles.search__items}>
+          {items.map((el) => (
+            <ListItem
+              key={el.id}
+              title={el.title}
+              image={el.thumbnail}
+              price={el.price}
+              location={el.address.state_name}
+              shipping={el.shipping.free_shipping}
+            />
+          ))}
         </div>
       </main>
     </div>
