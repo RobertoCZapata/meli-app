@@ -7,6 +7,7 @@ const AppState = (props) => {
   const initialState = {
     items: [],
     selectedItem: null,
+    filters: [],
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -14,7 +15,9 @@ const AppState = (props) => {
   const getItems = (query) => {
     fetch(`http://localhost:3000/api/items?q=${query}`)
       .then((response) => response.json())
-      .then(({ data }) => dispatch({ type: GET_ITEMS, payload: data.results }));
+      .then((data) => {
+        dispatch({ type: GET_ITEMS, payload: data });
+      });
   };
 
   const getSelectedItem = (id) => {
@@ -28,6 +31,7 @@ const AppState = (props) => {
       value={{
         items: state.items,
         selectedItem: state.selectedItem,
+        filters: state.filters,
         getItems,
         getSelectedItem,
       }}

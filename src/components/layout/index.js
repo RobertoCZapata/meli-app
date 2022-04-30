@@ -4,6 +4,7 @@ import { useState } from "react";
 import AppContext from "../../context/AppContext";
 
 import { SearchBar } from "../SearchBar/index";
+import Breadcrumb from "../BreadCrumb/index";
 
 export const Layout = ({ children }) => {
   const [query, setQuery] = useState();
@@ -30,6 +31,7 @@ export const Layout = ({ children }) => {
           handleSearchClick={handleSearchClick}
           handleChange={handleChange}
         />
+        <Breadcrumb />
         {children}
       </main>
     </div>

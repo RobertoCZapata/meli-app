@@ -18,9 +18,16 @@ export const ListItem = ({ id, title, price, image, location, shipping }) => {
               pathname: "/items/[id]",
               query: { id },
             }}
-            passHref
           >
-            <Image src={image} width={160} height={160} alt="Image Product" />
+            <a>
+              <Image
+                src={image}
+                width={160}
+                height={160}
+                alt="Image Product"
+                style={{ cursor: "pointer" }}
+              />
+            </a>
           </Link>
         </div>
         <div className="search__contentWrapper">

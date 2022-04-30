@@ -8,7 +8,8 @@ export default (state, action) => {
     case GET_ITEMS:
       return {
         ...state,
-        items: payload,
+        items: payload.items,
+        filters: payload.filters,
       };
     case GET_ITEM:
       return {

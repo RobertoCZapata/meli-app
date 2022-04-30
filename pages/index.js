@@ -9,13 +9,13 @@ export default function Home() {
     <div className="search__items">
       {items?.map((el) => (
         <ListItem
-          key={el.id}
-          id={el.id}
-          title={el.title}
-          image={el.thumbnail}
-          price={el.price}
-          location={el.address.state_name}
-          shipping={el.shipping.free_shipping}
+          key={el.item.id}
+          id={el.item.id}
+          title={el.item.title}
+          image={el.item.picture}
+          price={el.item.price.amount}
+          location={el.item.address.state_name}
+          shipping={el.item.free_shipping}
         />
       ))}
     </div>

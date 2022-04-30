@@ -2,6 +2,7 @@
 
 .detail {
   background-color: $color-background;
+  margin-top: 20px;
 
   &__container {
     display: flex;
@@ -9,11 +10,13 @@
   }
 
   &__image {
-    width: 80%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
   }
 
   &__header {
-    width: 100%;
+    width: 60%;
   }
 
   &__subtitle {
@@ -69,6 +72,10 @@
     margin-top: 50px;
   }
 
+  &__description {
+    padding: 30px;
+  }
+
   &__descriptionTitle {
     font-size: $font-lg;
     font-weight: 400;
@@ -81,5 +88,28 @@
     font-size: $font-subTitle;
     font-weight: 400;
     word-break: break-word;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__header {
+      width: 60%;
+      margin: auto;
+      text-align: left;
+    }
+
+    &__actions {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+    }
   }
 }
