@@ -1,6 +1,6 @@
 export default function handler(req, res) {
   const { q } = req.query;
-  fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${q}`)
+  fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${q}&limit=4`)
     .then((response) => response.json())
     .then((data) => {
       const { filters, results } = data;

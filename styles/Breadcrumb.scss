@@ -26,8 +26,10 @@
   &__link:hover {
     color: #3441fa;
   }
+}
 
-  &__link--active {
-    color: #3483fa;
+@media (max-width: 600px) {
+  .breadcrumb__container {
+    padding-left: 10px;
   }
 }
